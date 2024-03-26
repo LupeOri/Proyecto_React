@@ -1,7 +1,7 @@
 import React from "react";
 import ListaMovies from "../layout/ListaMovies";
 
-function PopularMovies() {
+function MainPage() {
   return (
     <>
       <ListaMovies />
@@ -9,4 +9,4 @@ function PopularMovies() {
   );
 }
 
-export default PopularMovies;
+export default MainPage;
