@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import YouTube from "react-youtube";
+import Movies from "./Movies";
 
 function ListaMovies() {
   const API_URL = "https://api.themoviedb.org/3";
@@ -16,17 +17,18 @@ function ListaMovies() {
 
   const getMovies = async (key) => {
     const type = key ? "search" : "discover";
-    const {
-      data: { results },
-    } = await axios.get(`${API_URL}/${type}/movie`, {
+    const response = await axios.get(`${API_URL}/${type}/movie`, {
       params: {
         api_key: API_KEY,
         query: key,
       },
     });
-
-    setMovies(results);
-    setMovie(results[0]);
+    const dataMovies = response.data.results.map((movie) => ({
+      id: movie.id,
+      img: `${URL_IMAGE + movie.poster_path}`,
+      title: movie.title,
+    }));
+    setMovies(dataMovies);
   };
 
   useEffect(() => {
@@ -35,19 +37,7 @@ function ListaMovies() {
 
   return (
     <div>
-      <div className="container">
-        {movies.map((movie) => (
-          <div key={movie.id} className="columna">
-            <img
-              src={`${URL_IMAGE + movie.poster_path}`}
-              alt=""
-              height={400}
-              width="100%"
-            />
-            <h4 className="movie-title">{movie.title}</h4>
-          </div>
-        ))}
-      </div>
+      <Movies movies={movies} />
     </div>
   );
 }
