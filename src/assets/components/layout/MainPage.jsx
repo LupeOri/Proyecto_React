@@ -1,11 +1,11 @@
 import React from "react";
-import ListaMovies from "../layout/ListaMovies";
+import ListaMovies from "./ListaMovies";
 
 function MainPage() {
   return (
-    <>
+    <div>
       <ListaMovies />
-    </>
+    </div>
   );
 }
 

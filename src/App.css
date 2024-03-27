@@ -16,9 +16,10 @@
 
 .header-container{
   display: flex;
-  height: auto;
-  background-color: rgb(223, 239, 253);
-  margin-bottom: 5px;
+  justify-content: space-around;
+    height: auto;
+    background-color: rgb(223, 239, 253);
+    margin-bottom: 5px;
 }
 
 .logo{
@@ -34,4 +35,42 @@
 
 h4{
   color: white;
+}
+
+.form-container{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.box-searcher{
+  display: flex;
+  flex-direction: row;
+}
+
+.searcher-form{
+  margin: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.btn-search{
+  margin: 10px;
+  width: 50px;
+  height: 10px;
+}
+
+
+.btn-search{
+  margin-right: 10px;
+  width: 100px;
+  height: 30px;
+  border-radius: 5px;
+  background-color: #254ca3;
+  border: none;
+}
+input{
+  width: 250px;
+  border-radius: 5px;
+  border: solid 1px #254ca3;
 }
