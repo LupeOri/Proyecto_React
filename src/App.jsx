@@ -1,16 +1,19 @@
 import "./App.css";
-import React from "react";
-import axios from "axios";
-import YouTube from "react-youtube";
-import { BrowserRouter, Router, Routes, Route } from "react-router-dom";
-import Home from "./assets/components/pages/Home";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import MoviesPage from "./assets/components/pages/MoviesPage";
+import SeriesPage from "./assets/components/pages/SeriesPage";
 
 function App() {
   return (
     <>
-      <div className="app">
-        <Home />
-      </div>
+      <Router>
+        <div className="app">
+          <Routes>
+            <Route path="/movies" element={<MoviesPage />} />
+            <Route path="/series" element={<SeriesPage />} />
+          </Routes>
+        </div>
+      </Router>
     </>
   );
 }

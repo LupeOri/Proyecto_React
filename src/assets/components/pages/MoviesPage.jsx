@@ -1,14 +1,12 @@
 import React from "react";
-import HeaderPage from "../layout/HeaderPage";
 import MainPage from "../layout/MainPage";
 
-function Home() {
+function MoviesPage() {
   return (
     <>
-      <HeaderPage />
       <MainPage />
     </>
   );
 }
 
-export default Home;
+export default MoviesPage;

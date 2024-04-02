@@ -19,7 +19,7 @@ function ListaMovies() {
         api_key: API_KEY,
         query: key,
       },
-    });
+    }); 
     const dataMovies = response.data.results.map((movie) => ({
       id: movie.id,
       img: `${URL_IMAGE + movie.poster_path}`,
