@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 
-function Searcher() {
+function Searcher({ onSearch }) {
   const API_URL = "https://api.themoviedb.org/3";
   const API_KEY = "bbaa7afeb202fbf5a15e8b9f2c114a45";
   const URL_IMAGE = "https://image.tmdb.org/t/p/original";
@@ -24,6 +24,8 @@ function Searcher() {
       title: movie.title,
     }));
     setMovies(dataMovies);
+
+    onSearch(key);
   };
 
   const searchMovies = (e) => {

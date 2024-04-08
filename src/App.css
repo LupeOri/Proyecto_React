@@ -1,9 +1,11 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
-  background-image: url("../public/img/back-blue.webp");
+body{
+
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 2rem;
+    text-align: center;
+    background-image: url("../public/img/back-blue.webp");
+  
 }
 
 .movies-container{

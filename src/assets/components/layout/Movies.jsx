@@ -1,38 +1,38 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 function Movies({ movies }) {
-  const [likes, setLikes] = useState(() => {
-    const storedLikes = JSON.parse(localStorage.getItem("likes"));
-    return storedLikes || {};
-  });
+  const initialLikes =
+    parseInt(localStorage.getItem(`likes-${movies.name}`)) || 0;
+  const initialDislikes =
+    parseInt(localStorage.getItem(`dislikes-${movies.name}`)) || 0;
 
-  const handleLike = (movieId) => {
-    setLikes((prevLikes) => ({
-      ...prevLikes,
-      [movieId]: (prevLikes[movieId] || 0) + 1,
-    }));
+  const [likes, setLikes] = useState(initialLikes);
+  const [dislikes, setDislikes] = useState(initialDislikes);
+  const [likeActive, setLikeActive] = useState(false);
+  const [dislikeActive, setDislikeActive] = useState(false);
+
+  useEffect(() => {
+    localStorage.setItem(`likes-${movies.name}`, likes.toString());
+    localStorage.setItem(`dislikes-${movies.name}`, dislikes.toString());
+  }, [likes, dislikes, movies.name]);
+
+  const handleLikeClick = () => {
+    if (likeActive !== false) {
+      setLikes(likes + 1);
+      setDislikeActive(false);
+    } else {
+      setLikeActive(true);
+    }
   };
 
-  const handleUnlike = (movieId) => {
-    setLikes((prevLikes) => {
-      const updatedLikes = { ...prevLikes };
-      if (updatedLikes[movieId] && updatedLikes[movieId] > 0) {
-        updatedLikes[movieId] -= 1;
-      }
-      return updatedLikes;
-    });
+  const handleDislikeClick = () => {
+    if (dislikeActive !== false) {
+      setDislikes(dislikes + 1);
+      setLikeActive(false);
+    } else {
+      setDislikeActive(true);
+    }
   };
-
-  const saveLikesToLocalStorage = () => {
-    localStorage.setItem("likes", JSON.stringify(likes));
-  };
-
-  // Almacenar los likes en el localStorage cada vez que cambian
-  // Esto garantiza que los likes persistan incluso si se actualiza la página
-  React.useEffect(() => {
-    saveLikesToLocalStorage();
-  }, [likes]);
-
   return (
     <div>
       <div className="movies-container">
@@ -41,11 +41,8 @@ function Movies({ movies }) {
             <img src={movie.img} alt="" />
             <h4 className="movie-title">{movie.title}</h4>
             <div>
-              <button onClick={() => handleLike(movie.id)}>Me gusta</button>
-              <button onClick={() => handleUnlike(movie.id)}>
-                No me gusta
-              </button>
-              <p>{`Esta película tiene ${likes[movie.id] || 0} me gusta`}</p>
+              <button onClick={handleLikeClick}>Like {likes}</button>
+              <button onClick={handleDislikeClick}>Dislike {dislikes}</button>
             </div>
           </div>
         ))}
