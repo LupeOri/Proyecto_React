@@ -5,6 +5,7 @@ function MainSeries() {
   return (
     <>
       <ListaSeries />
+  
     </>
   );
 }

@@ -39,10 +39,10 @@ function Movies({ movies }) {
         {movies.map((movie) => (
           <div key={movie.id} className="box-movie">
             <img src={movie.img} alt="" />
-            <h4 className="movie-title">{movie.title}</h4>
+            <h3 className="movie-title">{movie.title}</h3>
             <div>
-              <button onClick={handleLikeClick}>Like {likes}</button>
-              <button onClick={handleDislikeClick}>Dislike {dislikes}</button>
+              <button className="like" onClick={handleLikeClick}>Like {likes}</button>
+              <button className="dislike" onClick={handleDislikeClick}>Dislike {dislikes}</button>
             </div>
           </div>
         ))}

@@ -10,10 +10,12 @@ function NavPage() {
           <Link to="/">HOME</Link>
         </li>
         <li>
-          <Link to="/movies">MOVIES</Link>
+          <img className="logo" src="/img/logo-azul.png" alt="logo" />
         </li>
         <li>
-          <Link to="/series">SERIES</Link>
+          <h1 className="home-title">
+            Dale like a tus favoritos y descubre tu proximo show
+          </h1>
         </li>
       </ul>
     </nav>

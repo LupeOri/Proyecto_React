@@ -34,15 +34,21 @@ function ListaSeries() {
 
   return (
     <>
-      <input
-        type="text"
-        placeholder="Escriba el nombre de la pelicula..."
-        value={searchTerm}
-        onChange={busquedaSeries}
-      />
-      {filteredSeries.map((serie, index) => (
-        <CardSeries key={index} serie={serie} />
-      ))}
+      <div className="input-series">
+        <div>
+          <input
+            type="text"
+            placeholder="Escriba el nombre de la pelicula..."
+            value={searchTerm}
+            onChange={busquedaSeries}
+          />
+        </div>
+        <div className="container-series">
+          {filteredSeries.map((serie, index) => (
+            <CardSeries key={index} serie={serie} />
+          ))}
+        </div>
+      </div>
     </>
   );
 }
