@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Movies from "./Movies";
-import Searcher from "./Searcher"; 
+import Searcher from "./Searcher";
 
 function ListaMovies() {
   const API_URL = "https://api.themoviedb.org/3";
@@ -11,12 +11,12 @@ function ListaMovies() {
   const [movies, setMovies] = useState([]);
   const [key, setKey] = useState("");
 
-  const getMovies = async (key) => {
-    const type = key ? "search" : "discover";
+  const getMovies = async (searchKey) => {
+    const type = searchKey ? "search" : "discover";
     const response = await axios.get(`${API_URL}/${type}/movie`, {
       params: {
         api_key: API_KEY,
-        query: key,
+        query: searchKey,
       },
     });
     const dataMovies = response.data.results.map((movie) => ({
@@ -28,18 +28,22 @@ function ListaMovies() {
   };
 
   useEffect(() => {
-    getMovies(""); 
+    getMovies("");
   }, []);
 
   const handleSearch = (searchKey) => {
-    setKey(searchKey); 
-    getMovies(searchKey); 
+    setKey(searchKey);
+    getMovies(searchKey);
   };
 
   return (
     <div>
-      <Searcher onSearch={handleSearch} />{" "}
-      <Movies movies={movies} />{" "}
+      <Searcher onSearch={handleSearch} />
+      <div className="movies-container">
+        {movies.map((movie) => (
+          <Movies key={movie.id} movie={movie} />
+        ))}
+      </div>
     </div>
   );
 }

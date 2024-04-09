@@ -5,19 +5,17 @@ import React from "react";
 function NavPage() {
   return (
     <nav>
-      <ul>
-        <li>
-          <Link to="/">HOME</Link>
-        </li>
-        <li>
-          <img className="logo" src="/img/logo-azul.png" alt="logo" />
-        </li>
-        <li>
-          <h1 className="home-title">
-            Dale like a tus favoritos y descubre tu proximo show
-          </h1>
-        </li>
-      </ul>
+      <div className="link-home">
+        <Link to="/">HOME</Link>
+      </div>
+      <div className="logo-title">
+        <img className="logo" src="/img/likeurshow.png" alt="logo" />
+
+        <h1 className="home-title">
+          <p>Descubre tu proximo show segun los likes de la comunidad... </p>
+          <p>Unete y deja tu like &#128077; &#128078;</p>
+        </h1>
+      </div>
     </nav>
   );
 }

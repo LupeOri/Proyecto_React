@@ -35,7 +35,7 @@ function CardSeries({ serie }) {
   };
 
   return (
-    <div>
+    <div className="div-cards">
       <img className="cards" src={serie.image} alt={serie.name} />
       <h3>{serie.name}</h3>
       <div>
@@ -43,10 +43,10 @@ function CardSeries({ serie }) {
           className={`like ${likeActive ? "active" : ""}`}
           onClick={handleLikeClick}
         >
-          Like {likes}
+          Like &#128077; {likes}
         </button>
         <button className="dislike" onClick={handleDislikeClick}>
-          Dislike {dislikes}
+          Dislike &#128078; {dislikes}
         </button>
       </div>
     </div>

@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from "react";
 
-function Movies({ movies }) {
-  const initialLikes =
-    parseInt(localStorage.getItem(`likes-${movies.name}`)) || 0;
+function Movies({ movie }) {
+  const initialLikes = parseInt(localStorage.getItem(`likes-${movie.id}`)) || 0;
   const initialDislikes =
-    parseInt(localStorage.getItem(`dislikes-${movies.name}`)) || 0;
+    parseInt(localStorage.getItem(`dislikes-${movie.id}`)) || 0;
 
   const [likes, setLikes] = useState(initialLikes);
   const [dislikes, setDislikes] = useState(initialDislikes);
@@ -12,9 +11,9 @@ function Movies({ movies }) {
   const [dislikeActive, setDislikeActive] = useState(false);
 
   useEffect(() => {
-    localStorage.setItem(`likes-${movies.name}`, likes.toString());
-    localStorage.setItem(`dislikes-${movies.name}`, dislikes.toString());
-  }, [likes, dislikes, movies.name]);
+    localStorage.setItem(`likes-${movie.id}`, likes.toString());
+    localStorage.setItem(`dislikes-${movie.id}`, dislikes.toString());
+  }, [likes, dislikes, movie.id]);
 
   const handleLikeClick = () => {
     if (likeActive !== false) {
@@ -33,19 +32,18 @@ function Movies({ movies }) {
       setDislikeActive(true);
     }
   };
+
   return (
-    <div>
-      <div className="movies-container">
-        {movies.map((movie) => (
-          <div key={movie.id} className="box-movie">
-            <img src={movie.img} alt="" />
-            <h3 className="movie-title">{movie.title}</h3>
-            <div>
-              <button className="like" onClick={handleLikeClick}>Like {likes}</button>
-              <button className="dislike" onClick={handleDislikeClick}>Dislike {dislikes}</button>
-            </div>
-          </div>
-        ))}
+    <div className="box-movie">
+      <img src={movie.img} alt={movie.title} />
+      <h3 className="movie-title">{movie.title}</h3>
+      <div>
+        <button className="like" onClick={handleLikeClick}>
+          Like &#128077; {likes}
+        </button>
+        <button className="dislike" onClick={handleDislikeClick}>
+          Dislike &#128078;{dislikes}
+        </button>
       </div>
     </div>
   );

@@ -45,7 +45,9 @@ function ListaSeries() {
         </div>
         <div className="container-series">
           {filteredSeries.map((serie, index) => (
-            <CardSeries key={index} serie={serie} />
+            <div className="div-everycard">
+              <CardSeries key={index} serie={serie} />
+            </div>
           ))}
         </div>
       </div>
