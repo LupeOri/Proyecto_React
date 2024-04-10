@@ -38,7 +38,7 @@ function ListaSeries() {
         <div>
           <input
             type="text"
-            placeholder="Escriba el nombre de la pelicula..."
+            placeholder="Escriba el nombre de la serie..."
             value={searchTerm}
             onChange={busquedaSeries}
           />
